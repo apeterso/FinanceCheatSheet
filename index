@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=[redacted]"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', [redacted]);
+        </script>
+    </head>
+    <style>
+        input {
+            width:50px;
+        }
+        form{
+            display:inline-block;
+        }
+        th{
+            text-align: left;
+            font-weight: normal;
+            vertical-align: top;
+            width: 300px;
+        }
+        td{
+            width:250px;
+            text-align: right;
+            vertical-align: top;
+        }
+        output{
+            font: bold;
+        }
+        h1{
+            font-style: italic;
+        }
+        h2{
+            text-align: left;
+            vertical-align: top
+        }
+        h4{
+            text-align: left;
+            vertical-align: top;
+        }
+        .ratio{
+            text-align: right;
+        }
+    </style>
+    <body>
+
+        <h1>Financial Ratios</h1>
+        <fieldset>
+            <form oninput="cr.value=ca.value/cl.value;
+            qr.value=(ca.value-inv.value)/cl.value;
+            car.value=cash.value/cl.value;
+            tdr.value=(ta.value-te.value)/ta.value;
+            der.value=td.value/te.value;
+            em.value=ta.value/te.value;
+            tie.value=ebit.value/int.value;
+            ccr.value=(ebit.value+da.value)/int.value;
+            it.value=cogs.value/inv.value;
+            dsi.value=365/it.value;
+            rt.value=sales.value/ar.value;
+            dsr.value=365/rt.value;
+            tat.value=sales.value/ta.value;
+            ci.value=ta.value/sales.value;
+            pm.value=ni.value/sales.value;
+            roa.value=ni.value/ta.value;
+            roe.value=ni.value/te.value">
+                <table>
+                    <td>
+                        <h2>Balance Sheet</h2>
+                        <h4>Assets</h4>
+                        <label>Cash</label>
+                        <input type="number" name="cash" value=""/><br/>
+                        <label>Inventory</label>
+                        <input type="number" name="inv" value=""/><br/>
+                        <label>A/R</label>
+                        <input type="number" name="ar" value=""/><br/>
+                        <label>Current Assets</label>
+                        <input type="number" name="ca" value=""/><br/>
+                        <label>Total Assets</label>
+                        <input type="number" name="ta" value=""/><br/>
+                        <h4>Liabilities and Equity</h4>
+                        <label>Current Liabilities</label>
+                        <input type="number" name="cl" value=""/><br/>
+                        <label>Total Equity</label>
+                        <input type="number" name="te" value=""/><br/>
+                        <label>Total Debt</label>
+                        <input type="number" name="td" value=""/><br/>
+                    </td>
+                    <td>
+                        <h2>Income Statement</h2>
+                        <label>Sales</label>
+                        <input type="number" name="sales" value=""/><br/>
+                        <label>COGS</label>
+                        <input type="number" name="cogs" value=""/><br/>
+                        <label>Interest</label>
+                        <input type="number" name="int" value=""/><br/>
+                        <label>Depreciation+Amortization</label>
+                        <input type="number" name="da" value=""/><br/>
+                        <label>EBIT</label>
+                        <input type="number" name="ebit" value=""/><br/>
+                        <label>EBITDA</label>
+                        <input type="number" name="ebitda" value=""/><br/>
+                        <label>Net Income</label>
+                        <input type="number" name="ni" value=""/><br/>
+                    </td>
+                </table>
+                
+                <table>
+                    <th>
+                        <p>
+                            <label style="font-size:20px;font-style: italic"><u>Short-term solvency</u></label><br/>
+                            Current ratio: <output name="cr"></output><br/>
+                            Quick ratio: <output name="qr"></output><br/>
+                            Cash ratio: <output name="car"></output><br/>
+                        </p>
+                    </th>
+                    <th>
+                        <p>
+                            <label style="font-size:20px;font-style: italic"><u>Long-term solvency</u></label><br/>
+                            Total debt ratio: <output name="tdr"></output><br/>
+                            Debt-equity ratio: <output name="der"></output><br/>
+                            Equity multiplier: <output name="em"></output><br/>
+                            Times interest earned ratio: <output name="tie"></output><br/>
+                            Cash coverage ratio: <output name="ccr"></output><br/>
+                        </p>
+                    </th>
+                    <th>
+                        <p>
+                            <label style="font-size:20px;font-style: italic"><u>Asset Utilization</u></label><br/>
+                            Inventory turnover: <output name="it"></output><br/>
+                            Days sales in inventory: <output name="dsi"></output><br/>
+                            Receivables turnover: <output name="rt"></output><br/>
+                            Days sales in receivables: <output name="dsr"></output><br/>
+                            Total asset turnover: <output name="tat"></output><br/>
+                            Capital intensity: <output name="ci"></output><br/>
+                        </p>
+                    </th>
+                    <th>
+                        <p>
+                            <label style="font-size:20px;font-style: italic"><u>Profitability Ratios</u></label><br/>
+                            Profit margin: <output name="pm"></output><br/>
+                            Return on assets: <output name="roa"></output><br/>
+                            Return on equity: <output name="roe"></output><br/>
+                        </p>
+                    </th>
+                </table>
+            </form>
+            
+        </fieldset>
+        <h1>Annuities</h1>
+        <fieldset>
+            <form oninput="fv.value=futV(pv.value,r.value,t.value)">
+                <p>
+                    <label style="font-weight: bold">Future value calculator</label><br/>
+                    <label>Present value</label>
+                    <input type="number" name="pv" value=""/><br/>
+                    <label>r</label>
+                    <input type="number" name="r" value=""/><br/>
+                    <label>t</label>
+                    <input type="number" name="t" value=""/><br/>
+                    <label >FV= </label><output name="fv"></output>
+                </p>
+            </form>
+            <form oninput="pv.value=preV(fv.value,r.value,t.value)">
+                <p>
+                    <label style="font-weight: bold">Present value calculator</label><br/>
+                    <label>Future value</label>
+                    <input type="number" name="fv" value=""/><br/>
+                    <label>r</label>
+                    <input type="number" name="r" value=""/><br/>
+                    <label>t</label>
+                    <input type="number" name="t" value=""/><br/>
+                    <label>PV= </label><output name="pv"></output>
+                </p>
+            </form>
+            <form oninput="fv.value=annuityFV(c.value,r.value,t.value)">
+                <p>
+                    <label style="font-weight: bold">Annuity FV calculator</label><br/>
+                    <label>C</label>
+                    <input type="number" name="c" value=""/><br/>
+                    <label>r</label>
+                    <input type="number" name="r" value=""/><br/>
+                    <label>t</label>
+                    <input type="number" name="t" value=""/><br/>
+                    <label>FV= </label><output name="fv"></output>
+                </p>
+            </form>
+            <form oninput="pv.value=annuityPV(c.value,r.value,t.value)">
+                <p>
+                    <label style="font-weight: bold">Annuity PV calculator</label><br/>
+                    <label>C</label>
+                    <input type="number" name="c" value=""/><br/>
+                    <label>r</label>
+                    <input type="number" name="r" value=""/><br/>
+                    <label>t</label>
+                    <input type="number" name="t" value=""/><br/>
+                    <label>PV= </label><output name="pv"></output>
+                </p>
+            </form>
+            <form oninput="c.value=cCalculatorFV(r.value,t.value,fv.value)">
+                <p>
+                    <label style="font-weight: bold">FV recurring payment calculator (C)</label><br/>
+                    <label>r</label>
+                    <input type="number" name="r" value=""/><br/>
+                    <label>t</label>
+                    <input type="number" name="t" value=""/><br/>
+                    <label>fv</label>
+                    <input type="number" name="fv" value=""/><br/>
+                    <label>C= </label><output name="c"></output>
+                </p>
+            </form>
+            <form oninput="c.value=cCalculatorPV(r.value,t.value,pv.value)">
+                <p>
+                    <label style="font-weight: bold">PV recurring payment calculator (C)</label><br/>
+                    <label>r</label>
+                    <input type="number" name="r" value=""/><br/>
+                    <label>t</label>
+                    <input type="number" name="t" value=""/><br/>
+                    <label>pv</label>
+                    <input type="number" name="pv" value=""/><br/>
+                    <label>C= </label><output name="c"></output>
+                </p>
+            </form>
+        </fieldset>
+        <script type="text/javascript">
+            function futV(pv,r,t){
+                pv = parseFloat(pv);
+                r = parseFloat(r);
+                t = parseFloat(t);
+                return pv*Math.pow(r+1.0,t);
+            }
+
+            function preV(fv,r,t){
+                fv = parseFloat(fv);
+                r = parseFloat(r);
+                t = parseFloat(t);
+                return fv/Math.pow(r+1.0,t);
+            }
+
+            function annuityFV(c,r,t){
+                c = parseFloat(c);
+                r = parseFloat(r);
+                t = parseFloat(t);
+                var numerator = (Math.pow(r+1.0)-1.0);
+                return c*(numerator/r);
+            }
+
+            function annuityPV(c,r,t){
+                c = parseFloat(c);
+                r = parseFloat(r);
+                t = parseFloat(t);
+                var numerator = (1.0-(1.0/Math.pow(r+1.0,t)));
+                return c*(numerator/r);
+            }
+
+            function cCalculatorFV(r,t,fv){
+                r = parseFloat(r);
+                t = parseFloat(t);
+                fv = parseFloat(fv);
+                var denominator = (Math.pow(r+1.0,t)-1.0)/r;
+                return fv/denominator;
+            }
+
+            function cCalculatorPV(r,t,pv){
+                r = parseFloat(r);
+                t = parseFloat(t);
+                pv = parseFloat(pv);
+                var denominator = (1.0-(1.0/Math.pow(r+1.0,t)))/r;
+                return pv/denominator;
+            }
+        </script>
+    </body>
+</html>
